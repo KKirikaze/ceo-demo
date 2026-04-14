@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>企业2026全员AI落地方案</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+    :root {
+      --primary: #FF6B35;
+      --dark: #0D0D0D;
+      --card-bg: #141414;
+      --border: rgba(255,255,255,0.08);
+      --text-muted: rgba(255,255,255,0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,107,53,0.15) 0%, transparent 70%);
+      position: relative;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,107,53,0.15);
+      border: 1px solid rgba(255,107,53,0.4);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 900px;
+    }
+
+    .hero h1 span { color: var(--primary); }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: clamp(15px, 2vw, 20px);
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 100px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+
+    /* ── Steps ── */
+    .steps {
+      display: grid;
+      gap: 2px;
+    }
+
+    .step {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 32px;
+      align-items: start;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+
+    .step:hover {
+      border-color: rgba(255,107,53,0.4);
+      transform: translateX(4px);
+    }
+
+    .step-num {
+      font-size: 56px;
+      font-weight: 900;
+      color: rgba(255,107,53,0.15);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .step-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step-content p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,107,53,0.1);
+      border: 1px solid rgba(255,107,53,0.25);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 13px;
+    }
+
+    .step-time {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .time-num {
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .time-unit {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Result cards ── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .result-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      transition: border-color 0.2s;
+    }
+
+    .result-card:hover { border-color: rgba(255,107,53,0.35); }
+
+    .result-card .agent-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .result-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .result-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    .result-card .meta {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tag-green {
+      background: rgba(0,230,118,0.1);
+      border: 1px solid rgba(0,230,118,0.25);
+      color: #00e676;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+    }
+
+    /* ── Agents ── */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .agent-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .agent-emoji { font-size: 28px; margin-bottom: 10px; }
+    .agent-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .agent-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── Quote ── */
+    .quote-block {
+      border-left: 3px solid var(--primary);
+      padding: 24px 32px;
+      background: rgba(255,107,53,0.05);
+      border-radius: 0 12px 12px 0;
+      margin: 40px 0;
+    }
+
+    .quote-block p {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 500;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 100px 24px;
+      background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(255,107,53,0.12) 0%, transparent 70%);
+    }
+
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .step {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .step-num { font-size: 36px; }
+      .step-time { text-align: left; }
+      .hero-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-tag">🦞 AI 团队现场演示 · 2026</div>
+  <h1>企业<span>全员AI落地</span><br>四步完整方案</h1>
+  <p class="hero-sub">从年度战略到季度执行，从数据追踪到对外展示——AI全程参与，每一步都有产出，每一步都计时。</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">59s</div>
+      <div class="stat-label">战略制定</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">53s</div>
+      <div class="stat-label">执行方案</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">63s</div>
+      <div class="stat-label">内容创作</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">今晚</div>
+      <div class="stat-label">网站上线</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Steps -->
+<section>
+  <div class="section-tag">演示流程</div>
+  <h2 class="section-title">四步递进，全程计时</h2>
+  <p class="section-desc">一条完整的故事线：战略 → 执行 → 数据 → 展示。AI不只是工具，是真正的团队成员。</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3>战略制定</h3>
+        <p>把"2026年全员AI落地"这个目标交给参谋，59秒获得：五大行业切入框架、三个判断标准、三个必踩的坑。</p>
+        <span class="step-badge">🧠 参谋 · 研究分析</span>
+      </div>
+      <div class="step-time">
+        <div class="time-num">59</div>
+        <div class="time-unit">秒</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3>战略执行</h3>
+        <p>运营官把战略目标拆解成OKR四项KR + Q1-Q4路线图 + 三大风险预警 + 第一周行动清单，53秒内完成。</p>
+        <span class="step-badge">📋 运营官 · 执行跟进</span>
+      </div>
+      <div class="step-time">
+        <div class="time-num">53</div>
+        <div class="time-unit">秒</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3>数据运营</h3>
+        <p>Q2进行中，把本月数据扔给AI：AI工具使用率38%、质检错误率从5.2%降到4.1%、人均产值提升8%——AI当场给出诊断+预警+本周干预方案。</p>
+        <span class="step-badge">📊 参谋 + 运营官 · 联合分析</span>
+      </div>
+      <div class="step-time">
+        <div class="time-num">实时</div>
+        <div class="time-unit">分析</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h3>进化官做成网站</h3>
+        <p>你现在看到的这个网站，就是进化官今晚做的。从零到上线，一个晚上，GitHub Pages部署，全球可访问。</p>
+        <span class="step-badge">💻 进化官 · 技术实现</span>
+      </div>
+      <div class="step-time">
+        <div class="time-num">今晚</div>
+        <div class="time-unit">上线</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Results -->
+<section>
+  <div class="section-tag">实际产出</div>
+  <h2 class="section-title">三个Agent，三份真实产出</h2>
+  <p class="section-desc">这不是模板，不是预设的回答。每一份产出都是今天现场生成的。</p>
+
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="agent-label">🧠 参谋</div>
+      <h4>AI战略切入分析报告</h4>
+      <p>五大行业全覆盖（制造/零售/金融/教育/医疗），每个行业给出具体数据和切入逻辑。判断框架：频率×痛点密度、黄金数据、失败成本低。</p>
+      <div class="meta">
+        <span>1200字 · 五行业数据</span>
+        <span class="tag-green">✓ 59秒完成</span>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <div class="agent-label">📋 运营官</div>
+      <h4>2026年AI化改造战略执行方案</h4>
+      <p>4个KR（人效/毛利率/AI覆盖流程/年化节省）、Q1-Q4完整路线图、3个风险预警、第一周5件优先级行动清单。</p>
+      <div class="meta">
+        <span>OKR + 路线图 + 风控</span>
+        <span class="tag-green">✓ 53秒完成</span>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <div class="agent-label">✍️ 笔杆子</div>
+      <h4>公众号文章：53秒，AI帮制造业CEO把全年战略拆完了</h4>
+      <p>1800字，全程脱敏，有故事感，有数据，有判断。从战略会死于执行的痛点切入，到AI如何补上这座桥。</p>
+      <div class="meta">
+        <span>1800字 · 全程脱敏</span>
+        <span class="tag-green">✓ 63秒完成</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <p>以前开完战略会，我自己都不知道下周应该干什么。现在AI给了我一个清单，我只需要去推动就行。</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Agents -->
+<section>
+  <div class="section-tag">团队构成</div>
+  <h2 class="section-title">不是一个AI，是一支团队</h2>
+  <p class="section-desc">每个角色专注一个方向，分工明确，协作流畅。7×24小时在岗，没有深夜，没有周末。</p>
+
+  <div class="agents-grid">
+    <div class="agent-card">
+      <div class="agent-emoji">🧠</div>
+      <h4>参谋</h4>
+      <p>行业研究、竞品分析、战略制定的信息支撑</p>
+    </div>
+    <div class="agent-card">
+      <div class="agent-emoji">📋</div>
+      <h4>运营官</h4>
+      <p>OKR拆解、执行跟进、日报、邮件、审批</p>
+    </div>
+    <div class="agent-card">
+      <div class="agent-emoji">✍️</div>
+      <h4>笔杆子</h4>
+      <p>公众号、Thread、创始人IP内容创作</p>
+    </div>
+    <div class="agent-card">
+      <div class="agent-emoji">💻</div>
+      <h4>进化官</h4>
+      <p>脚本开发、工具搭建、网站部署、系统集成</p>
+    </div>
+    <div class="agent-card">
+      <div class="agent-emoji">🎨</div>
+      <h4>多媒体官</h4>
+      <p>生图、生视频、生音乐、海报配图</p>
+    </div>
+    <div class="agent-card">
+      <div class="agent-emoji">🦞</div>
+      <h4>三万（总指挥）</h4>
+      <p>接收指令、拆解任务、协调团队、汇报结果</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>你也可以拥有<br>同款AI团队</h2>
+  <p>不是买工具，是配置一支会协作的AI团队</p>
+</div>
+
+<footer>
+  <p>企业2026全员AI落地方案演示 · 今晚进化官现场制作 · GitHub Pages部署</p>
+</footer>
+
+</body>
+</html>
